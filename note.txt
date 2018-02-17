@@ -1,0 +1,6 @@
+/* 服务器本地servlet地址 */
+String servletPath = request.getSession().getServletContext().getRealPath("");
+/* servlet名 */
+String contextPath = request.getContextPath();
+/* 远程servlet地址 */
+String remoteUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + contextPath;

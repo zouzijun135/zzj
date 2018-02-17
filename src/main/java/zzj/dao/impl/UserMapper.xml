@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="zzj.dao.IUserDao">
+
+  <resultMap id="BaseResultMap" type="zzj.bean.User" >
+    <id column="u_id" property="userId" jdbcType="INTEGER" />
+    <result column="u_name" property="username" jdbcType="VARCHAR" />
+    <result column="u_password" property="password" jdbcType="VARCHAR" />
+  </resultMap> 
+  
+  <sql id="Base_Column_List" >
+    u_id, u_name, u_password
+  </sql>
+  
+  <!-- ################### command select ################### -->
+  <select id="findById" resultMap="BaseResultMap" parameterType="int" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_t
+    where u_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findByUserName" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_t
+    where u_name = #{username,jdbcType=VARCHAR}
+  </select>
+  
+</mapper>

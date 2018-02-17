@@ -1,0 +1,21 @@
+.box {
+  width: 210px;
+  margin: 5px;
+  text-align:center;
+  float: left;
+  background: #EEE;
+  box-shadow:3px 3px 6px rgba(0, 0, 0, .3);
+}
+
+.box img {
+  max-width: 100%;
+}
+
+.box img:hover{
+  cursor:pointer;
+}
+
+small {
+  padding-left: 20px;
+}
+
