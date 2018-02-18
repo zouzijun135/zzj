@@ -19,5 +19,9 @@ public interface IPhotoService {
     byte[] saveTemporaryImg(MultipartFile imgFile, String servletRealPath) throws IOException;
     
     String saveImgToDB(String servletRealPath, String fileName, String description);
+    
+    String updateDescription(String strId, String description);
+    
+    String deletePhoto(String strId);
 
 }

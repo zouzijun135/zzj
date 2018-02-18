@@ -174,4 +174,24 @@ public class PhotoServiceImpl implements IPhotoService {
         }
         return id;
     }
+
+    @Override
+    public String updateDescription(String strId, String description) {
+        String resId = "";
+        if (CommonFunc.isInteger(strId)) {
+            int id = Integer.parseInt(strId);
+            resId = String.valueOf(imageDao.updateDescriptionById(id, description));
+        }
+        return resId;
+    }
+
+    @Override
+    public String deletePhoto(String strId) {
+        String resId = "";
+        if (CommonFunc.isInteger(strId)) {
+            int id = Integer.parseInt(strId);
+            resId = String.valueOf(imageDao.deleteRecordById(id));
+        }
+        return resId;
+    }
 }

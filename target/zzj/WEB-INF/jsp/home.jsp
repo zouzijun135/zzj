@@ -91,6 +91,19 @@
               <div class="col-md-4 column" id="text-contents">
                 <h2>Story...<small id="date-contents"></small></h2>
                 <p id="description-contents"></p>
+                <textarea id="description-contents-edit-area" rows="8" style="width:100%;" hidden></textarea>
+                <button id="description-contents-edit-button" class="btn btn-info" type="button" style="float:left; width:100px; margin:5px;">
+                  <i class="glyphicon glyphicon-pencil" style="margin:5px;"></i>Edit
+                </button>
+                <button id="description-contents-edit-button-confirm" class="btn btn-success" type="button" style="float:left; width:100px; margin:5px;" hidden>
+                  <i class="glyphicon glyphicon-ok" style="margin:5px;"></i>Ok
+                </button>
+                <button id="delete-image" class="btn btn-warning" type="button" style="float:right; width:100px; margin:5px;">
+                  <i class="glyphicon glyphicon-trash" style="margin:5px;"></i>Delete
+                </button>
+                <button id="delete-image-confirm" class="btn btn-danger" type="button" style="float:right; width:100px; margin:5px;" hidden>
+                  <i class="glyphicon glyphicon-remove" style="margin:5px;"></i>Remove
+                </button>
               </div>
               <!-- full-size image description area end -->
             </div>

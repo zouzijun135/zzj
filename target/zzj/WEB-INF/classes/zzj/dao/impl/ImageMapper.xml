@@ -66,4 +66,17 @@
            #{imageUploadDate,jdbcType=DATE})
   </insert>
   
+  <!-- ################### command update ################### -->
+  <update id="updateDescriptionById">  
+    update image_t 
+    set i_description = #{description,jdbcType=VARCHAR} 
+    where i_id = #{imageId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- ################### command delete ################### -->
+  <delete id="deleteRecordById" parameterType="int">  
+    delete from image_t 
+    where i_id = #{imageId,jdbcType=INTEGER}
+  </delete>
+  
 </mapper>

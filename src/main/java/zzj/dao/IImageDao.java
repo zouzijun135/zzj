@@ -17,4 +17,10 @@ public interface IImageDao {
     
     /* insert */
     int insertRecord(Image image);
+    
+    /* update */
+    int updateDescriptionById(@Param(value="imageId") int imageId, @Param(value="description") String description);
+    
+    /* delete */
+    int deleteRecordById(int imageId);
 }

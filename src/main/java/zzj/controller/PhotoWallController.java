@@ -89,4 +89,28 @@ public class PhotoWallController {
         return json;
     }
     
+    @RequestMapping(value = "/updateDescription", method =RequestMethod.POST)
+    @ResponseBody
+    public String updateDescription(@RequestBody Map<String, String> data, HttpServletRequest request) {
+        
+        String targetPhotoId = "";
+        String newDescription = "";
+        if (data != null && data.containsKey("id") && data.containsKey("newtext")) {
+            targetPhotoId = data.get("id");
+            newDescription = data.get("newtext");
+        }
+        String strId = photoService.updateDescription(targetPhotoId, newDescription);
+        return strId;
+    }
+    
+    @RequestMapping(value = "/deletePhoto", method =RequestMethod.POST)
+    @ResponseBody
+    public String deletePhoto(HttpServletRequest request, HttpServletResponse response) {
+        
+        String targetPhotoId = request.getParameter("id");
+        String strId = photoService.deletePhoto(targetPhotoId);
+        return strId;
+    }
+    
+    
 }

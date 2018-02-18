@@ -76,6 +76,7 @@ $(document).ready(function(){
         xhr.onload = function() {
           var blob = this.response;
           var img = document.createElement("img");
+          img.setAttribute("data-id", id);
           img.src = window.URL.createObjectURL(blob);
           img.style.width = '100%';
           img.onload = function() {
@@ -85,6 +86,12 @@ $(document).ready(function(){
             $('#image-contents').append(img);
             $('#date-contents').html(uploadDate);
             $('#description-contents').html(description);
+            $('#description-contents-edit-area').hide();
+            $('#description-contents-edit-area').val(description);
+            $('#description-contents-edit-button').show();
+            $('#description-contents-edit-button-confirm').hide();
+            $('#delete-image').show();
+            $('#delete-image-confirm').hide();
           };
         };
         xhr.send("id="+id);
@@ -277,5 +284,67 @@ function getPhotoIdList(keyword, startDate, endDate) {
     error: function(res){
         alert(res.responseText);
     }
+  });
+  // edit description
+  $("#description-contents-edit-button").click(function(){
+    $('#description-contents').hide();
+    $('#description-contents-edit-area').show();
+    $(this).hide();
+    $('#description-contents-edit-button-confirm').show();
+  });
+  // confirm edit
+  $("#description-contents-edit-button-confirm").click(function(){
+    var newtext=$('#description-contents-edit-area').val();
+    var id=$("#image-contents img").attr("data-id");
+    var param = {"id":id, "newtext":newtext};
+    //update DB
+    $.ajax({
+      url: contextPath + '/updateDescription',
+      type: 'POST',
+      contentType : 'application/json;charset=utf-8',
+      dataType:"json",
+      data: JSON.stringify(param),
+      success: function(data){
+        var updatedId = eval("("+data+")");
+        if(updatedId != ""){
+          $('#description-contents').html(newtext);
+          $('#description-contents').show();
+          $('#description-contents-edit-area').hide();
+          $('#description-contents-edit-button-confirm').hide();
+          $('#description-contents-edit-button').show();
+        }
+      },
+      error: function(res){
+          alert(res.responseText);
+      }
+    });
+  });
+  // delete image
+  $("#delete-image").click(function(){
+    $('#delete-image').hide();
+    $('#delete-image-confirm').show();
+  });
+  // confirm delete image
+  $("#delete-image-confirm").click(function(){
+    // delete image from DB
+    var id=$("#image-contents img").attr("data-id");
+    $.ajax({
+      url: contextPath + '/deletePhoto',
+      type: 'POST',
+      contentType : 'application/x-www-form-urlencoded',
+      dataType:"json",
+      data: "id="+id,
+      success: function(data){
+        // del img node from photo wall
+        var delId = eval("("+data+")");
+        if(delId != ""){
+          $(".box img[data-id=" + id + "]").first().parent().remove();
+        }
+        $('#full-image-popup').modal('hide');
+      },
+      error: function(res){
+          alert(res.responseText);
+      }
+    });
   });
 }
