@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/page-index.css" rel="stylesheet">
+    <link href="./img/icon/heart_index.ico" rel="shortcut icon">
   </head>
   <body>
     <div class="login-container container">

@@ -32,6 +32,16 @@
 		<property name="minIdle" value="${minIdle}"></property>
 		<!-- 获取连接最大等待时间 -->
 		<property name="maxWait" value="${maxWait}"></property>
+		<!-- 验证连接是否成功, SQL SELECT 指令至少要返回一行 -->
+		<property name="validationQuery" value="${validationQuery}"></property>
+		<!-- 空闲时是否进行验证，检查对象是否有效，默认为false -->
+		<property name="testWhileIdle" value="${testWhileIdle}"></property>
+		<!-- 失效检查线程运行时间间隔，如果小于等于0，不会启动检查线程，默认-1 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"></property>
+		<!-- 大于0 ，进行连接空闲时间判断，或为0，对空闲的连接不进行验证；默认30分钟  -->
+		<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"></property>
+		<!-- 取得对象时是否进行验证，检查对象是否有效，默认为false -->
+		<property name="testOnBorrow" value="${testOnBorrow}"></property>
 	</bean>
 
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->

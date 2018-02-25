@@ -13,6 +13,7 @@
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/page-home.css" rel="stylesheet">
     <link href="./css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="./img/icon/heart_pages.ico" rel="shortcut icon">
   </head>
   <body>
     <input id="context-path" value='<%=request.getContextPath()%>' hidden/>
